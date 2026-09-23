@@ -4,244 +4,122 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Global Community</title>
+    <title>Global Aesthetic Community</title>
 
-    <meta name="description"
-          content="Welcome to our global online community. Connect, explore and join our official networks.">
+    <meta name="description" content="Welcome to our global aesthetic community. Explore beautiful photography and connect with our official social networks.">
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="YOUR_LOGO_URL_HERE">
+    <link rel="icon" type="image/png"
+        href="https://i.ibb.co.com/hRkQbH4S/1790147768199.png">
 
     <style>
         * {
             box-sizing: border-box;
         }
 
-        html {
-            min-height: 100%;
-        }
-
         body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+
+            /* দুইটি Theme Image */
+            background-image:
+                url("https://i.ibb.co.com/MyBw42B1/13850422-049-0f40.jpg"),
+                url("https://i.ibb.co.com/8LxpWcHB/97584643-081-d7ee.jpg");
+
+            background-size: cover, 420px;
+            background-position: center, bottom right;
+            background-repeat: no-repeat, no-repeat;
+            background-attachment: fixed;
+
+            color: #333;
+            text-align: center;
+            padding: 40px 20px;
             margin: 0;
             min-height: 100vh;
-            font-family: Arial, Helvetica, sans-serif;
-            color: #222;
-            text-align: center;
-
-            /* Background images */
-            background-image:
-                linear-gradient(
-                    rgba(255,255,255,0.72),
-                    rgba(255,255,255,0.72)
-                ),
-                url("YOUR_BACKGROUND_IMAGE_1_URL"),
-                url("YOUR_BACKGROUND_IMAGE_2_URL");
-
-            background-size: cover, cover, cover;
-            background-position: center, center, center;
-            background-attachment: fixed;
-            background-repeat: no-repeat;
-        }
-
-        .page {
-            width: 100%;
-            padding: 45px 15px;
         }
 
         .container {
-            width: 100%;
-            max-width: 700px;
-            margin: auto;
-            padding: 35px 25px;
-
-            background: rgba(255,255,255,0.82);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-
-            border: 1px solid rgba(255,255,255,0.8);
-            border-radius: 24px;
-
-            box-shadow:
-                0 15px 45px rgba(0,0,0,0.18);
-        }
-
-        /* Logo */
-        .logo-wrapper {
-            width: 125px;
-            height: 125px;
-            margin: 0 auto 22px;
-
-            padding: 5px;
-
-            border-radius: 50%;
-            background: rgba(255,255,255,0.9);
-
-            box-shadow:
-                0 8px 25px rgba(0,0,0,0.20);
-        }
-
-        .logo {
-            width: 100%;
-            height: 100%;
-
-            border-radius: 50%;
-            object-fit: cover;
-
-            display: block;
+            background: rgba(255, 255, 255, 0.94);
+            max-width: 650px;
+            margin: 0 auto;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
         }
 
         h1 {
-            margin: 5px 0 15px;
-
-            font-size: 34px;
-            line-height: 1.15;
-
             color: #1877f2;
+            font-size: 26px;
+            margin-bottom: 10px;
         }
 
-        .intro {
-            max-width: 560px;
-            margin: 0 auto 30px;
-
-            font-size: 17px;
-            line-height: 1.7;
-
-            color: #444;
-        }
-
-        /* Cards */
-        .card {
-            margin: 20px 0;
-            padding: 28px 22px;
-
-            background: rgba(255,255,255,0.75);
-
-            border: 1px solid rgba(0,0,0,0.10);
-            border-radius: 18px;
-
-            box-shadow: 0 7px 22px rgba(0,0,0,0.08);
-
-            transition: transform 0.25s ease,
-                        box-shadow 0.25s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-4px);
-
-            box-shadow:
-                0 12px 30px rgba(0,0,0,0.14);
-        }
-
-        .card h2 {
-            margin: 0 0 12px;
-
-            font-size: 25px;
-            color: #222;
-        }
-
-        .card p {
-            margin: 0 0 22px;
-
-            font-size: 16px;
-            line-height: 1.6;
-
+        p {
+            font-size: 15px;
+            line-height: 1.5;
             color: #555;
+            margin-bottom: 20px;
         }
 
-        /* Button */
+        .card {
+            background: rgba(248, 249, 250, 0.95);
+            border: 1px solid #e1e4e8;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
         .btn {
             display: inline-block;
-
-            padding: 14px 28px;
-
-            background: #1877f2;
-            color: #fff;
-
+            background-color: #1877f2;
+            color: white;
+            padding: 12px 30px;
             font-size: 16px;
             font-weight: bold;
-
             text-decoration: none;
-
-            border-radius: 10px;
-
-            box-shadow:
-                0 5px 15px rgba(24,119,242,0.28);
-
-            transition:
-                transform 0.2s ease,
-                background 0.2s ease;
+            border-radius: 6px;
+            transition: background 0.3s;
         }
 
         .btn:hover {
-            background: #0d65d9;
-            transform: translateY(-2px);
+            background-color: #165fe5;
         }
 
-        /* Info section */
-        .info-box {
-            margin-top: 25px;
-            padding: 22px;
-
-            background: rgba(245,247,250,0.78);
-
-            border-radius: 15px;
-            border: 1px solid rgba(0,0,0,0.08);
+        .custom-logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+            border: 2px solid #1877f2;
         }
 
-        .info-box h3 {
-            margin: 0 0 10px;
-            font-size: 18px;
-        }
-
-        .info-box p {
-            margin: 0;
-            color: #555;
-            line-height: 1.6;
-        }
-
-        footer {
-            margin-top: 25px;
-
+        .keywords-box {
+            margin-top: 30px;
+            text-align: left;
+            background: rgba(241, 243, 245, 0.95);
+            padding: 15px;
+            border-radius: 6px;
             font-size: 13px;
-            color: #666;
+            color: #495057;
         }
 
-        /* Mobile */
-        @media (max-width: 600px) {
+        .keywords-box h3 {
+            font-size: 14px;
+            margin-top: 0;
+            color: #333;
+        }
 
-            .page {
-                padding: 20px 10px;
+        @media (max-width: 600px) {
+            body {
+                padding: 20px 12px;
+                background-size: cover, 250px;
             }
 
             .container {
-                padding: 28px 15px;
-                border-radius: 18px;
-            }
-
-            .logo-wrapper {
-                width: 105px;
-                height: 105px;
+                padding: 22px 16px;
             }
 
             h1 {
-                font-size: 29px;
-            }
-
-            .intro {
-                font-size: 15px;
-            }
-
-            .card {
-                padding: 23px 16px;
-            }
-
-            .card h2 {
-                font-size: 22px;
-            }
-
-            .btn {
-                width: 100%;
-                padding: 14px 10px;
+                font-size: 23px;
             }
         }
     </style>
@@ -249,94 +127,69 @@
 
 <body>
 
-<div class="page">
+    <div class="container">
 
-    <main class="container">
+        <!-- Website Logo -->
+        <img
+            src="https://i.ibb.co.com/hRkQbH4S/1790147768199.png"
+            alt="Website Logo"
+            class="custom-logo"
+        >
 
-        <!-- LOGO -->
-        <div class="logo-wrapper">
-            <img
-                src="YOUR_LOGO_URL_HERE"
-                alt="Community Logo"
-                class="logo"
-            >
-        </div>
+        <h1>Global Aesthetic Community</h1>
 
-        <h1>Global Community</h1>
-
-        <p class="intro">
-            Welcome to our global online community.
-            Connect with members, discover new content,
-            and join our official social networks.
+        <p>
+            Welcome to our global aesthetic platform.
+            Explore beautiful photography and connect with our official networks below.
         </p>
 
-
-        <!-- FACEBOOK GROUP -->
-        <section class="card">
-
+        <!-- Facebook Group -->
+        <div class="card">
             <h2>Official Facebook Group</h2>
 
             <p>
-                Join our community on Facebook and
-                connect with members from around the world.
+                Join our global community and connect with other members.
             </p>
 
             <a
-                href="YOUR_FACEBOOK_GROUP_URL"
+                href="https://www.facebook.com/share/g/1DYjCBFgNQ/"
                 class="btn"
                 target="_blank"
                 rel="noopener noreferrer"
             >
                 Join Facebook Group
             </a>
+        </div>
 
-        </section>
-
-
-        <!-- FACEBOOK PAGE -->
-        <section class="card">
-
+        <!-- Facebook Page -->
+        <div class="card">
             <h2>Official Facebook Page</h2>
 
             <p>
-                Follow our official Facebook page
-                for updates and new posts.
+                Follow our official page for new updates and content.
             </p>
 
             <a
-                href="YOUR_FACEBOOK_PAGE_URL"
+                href="https://www.facebook.com/feetloversworld"
                 class="btn"
                 target="_blank"
                 rel="noopener noreferrer"
             >
                 Visit Facebook Page
             </a>
+        </div>
 
-        </section>
-
-
-        <!-- INFORMATION -->
-        <section class="info-box">
-
+        <!-- Information -->
+        <div class="keywords-box">
             <h3>About Our Community</h3>
 
             <p>
-                A friendly global community where
-                people can connect, share interests,
-                and stay updated through our official
-                social channels.
+                Photography, aesthetics, lifestyle, creative content,
+                community discussions and social updates.
             </p>
+        </div>
 
-        </section>
-
-
-        <footer>
-            © 2026 Global Community. All rights reserved.
-        </footer>
-
-    </main>
-
-</div>
+    </div>
 
 </body>
 </html>

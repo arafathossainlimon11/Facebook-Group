@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>তোমাতেই আমার গল্প — Romantic Story</title>
+<style>
+:root{--pink:#ff6f91;--cream:#fff4ee}
+*{box-sizing:border-box}
+body{margin:0;background:#100f19;color:white;font-family:system-ui,-apple-system,"Noto Sans Bengali",sans-serif;min-height:100vh;display:grid;place-items:center;padding:18px}
+.player{width:min(960px,100%);background:#191725;border:1px solid #383346;border-radius:22px;overflow:hidden;box-shadow:0 25px 80px #0009}
+.stage{height: min(62vw,540px);min-height:330px;position:relative;overflow:hidden;background:linear-gradient(#242d50,#e88b91 75%,#272238);isolation:isolate}
+.sky{position:absolute;inset:0;background:linear-gradient(180deg,#18213d 0%,#5c5478 48%,#e6a0a0 100%);transition:filter 1.5s}
+.sun{position:absolute;width:100px;height:100px;border-radius:50%;background:#ffd6b0;filter:blur(1px);top:18%;right:17%;box-shadow:0 0 55px #ffd6b077}
+.city{position:absolute;bottom:22%;width:100%;height:25%;background:linear-gradient(90deg,#24243a 0 8%,transparent 8% 10%,#33304a 10% 19%,transparent 19% 22%,#29283e 22% 34%,transparent 34% 38%,#37304b 38% 51%,transparent 51% 55%,#25243b 55% 69%,transparent 69% 73%,#302b45 73% 88%,transparent 88%);clip-path:polygon(0 30%,8% 30%,8% 0,18% 0,18% 40%,28% 40%,28% 12%,38% 12%,38% 48%,48% 48%,48% 0,60% 0,60% 35%,70% 35%,70% 10%,82% 10%,82% 45%,100% 45%,100% 100%,0 100%);opacity:.85}
+.ground{position:absolute;bottom:0;height:25%;width:100%;background:linear-gradient(#30283c,#151522)}
+.scene-title{position:absolute;top:8%;width:100%;text-align:center;letter-spacing:2px;font-size:clamp(18px,3vw,28px);font-weight:700;text-shadow:0 3px 12px #21172c}
+.scene-sub{position:absolute;top:17%;width:100%;text-align:center;color:#ffe5e5;font-size:clamp(12px,1.7vw,16px);text-shadow:0 2px 8px #24172b}
+.people{position:absolute;bottom:19%;left:0;width:100%;height:48%;display:flex;justify-content:center;align-items:end;gap:clamp(35px,10vw,100px)}
+.person{position:relative;width:clamp(70px,12vw,112px);height:100%;animation:bob 3s ease-in-out infinite}
+.person.girl{animation-delay:-1.2s}
+.head{position:absolute;top:0;left:25%;width:50%;aspect-ratio:1;border-radius:50%;background:#c98569;z-index:2;box-shadow:inset -8px -4px #8e574f}
+.hair{position:absolute;top:-5%;left:19%;width:62%;height:35%;border-radius:55% 55% 25% 25%;background:#211a24;z-index:3}
+.girl .hair{height:46%;border-radius:55% 55% 40% 40%}
+.body{position:absolute;bottom:0;left:8%;width:84%;height:68%;border-radius:38% 38% 12% 12%;background:#526e9c;clip-path:polygon(20% 0,80% 0,100% 100%,0 100%)}
+.girl .body{background:#b94f78}
+.heart{position:absolute;left:50%;top:43%;transform:translate(-50%,-50%);font-size:30px;opacity:0;filter:drop-shadow(0 0 12px #ff668c);animation:heart 3s ease-in-out infinite}
+.rain{position:absolute;inset:-20% 0 0;opacity:0;background-image:repeating-linear-gradient(105deg,transparent 0 24px,#d9e9ff88 25px 26px,transparent 27px 45px);animation:rainfall .35s linear infinite}
+.caption{position:absolute;bottom:4%;left:5%;right:5%;text-align:center;font-size:clamp(14px,2.1vw,20px);font-weight:600;text-shadow:0 2px 10px #000;min-height:32px}
+.stage[data-scene="1"] .sky{filter:hue-rotate(8deg) brightness(1.08)}
+.stage[data-scene="2"] .sky{filter:hue-rotate(35deg) saturate(1.2)}
+.stage[data-scene="3"] .sky{filter:hue-rotate(70deg) brightness(.78)}
+.stage[data-scene="3"] .rain{opacity:.8}
+.stage[data-scene="4"] .sky{filter:brightness(.62) saturate(.8)}
+.stage[data-scene="4"] .heart{opacity:1}
+.stage[data-scene="5"] .sky{filter:hue-rotate(-15deg) brightness(1.15)}
+.stage[data-scene="5"] .person{transform:translateX(0) scale(1.05)}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes heart{0%,100%{opacity:0;transform:translate(-50%,-40%) scale(.7)}50%{opacity:1;transform:translate(-50%,-60%) scale(1.25)}}
+@keyframes rainfall{to{background-position:0 100px}}
+.controls{padding:16px 18px 18px}
+.topline{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px}
+.brand{font-weight:800;color:#ffd5df}
+.time{font-size:13px;color:#c9c4d4;font-variant-numeric:tabular-nums}
+.progress{width:100%;accent-color:var(--pink);cursor:pointer}
+.buttons{display:flex;justify-content:center;align-items:center;gap:12px;margin-top:12px;flex-wrap:wrap}
+button{border:1px solid #51485f;background:#292538;color:white;border-radius:999px;padding:10px 18px;font-size:14px;cursor:pointer}
+button.primary{background:var(--pink);border-color:var(--pink);color:#281321;font-weight:800;min-width:112px}
+button:hover{filter:brightness(1.12)}
+.note{color:#aaa4b7;font-size:12px;text-align:center;margin:13px 0 0}
+@media(max-width:520px){.stage{min-height:390px;height:112vw}.people{height:43%;bottom:20%}.person{width:78px}.controls{padding:13px}.buttons{gap:7px}button{padding:9px 13px}}
+</style>
+</head>
+<body>
+<main class="player">
+  <section class="stage" id="stage" data-scene="0" aria-label="রোমান্টিক অ্যানিমেটেড গল্প">
+    <div class="sky"></div><div class="sun"></div><div class="city"></div><div class="ground"></div>
+    <div class="scene-title" id="title">তোমাতেই আমার গল্প</div>
+    <div class="scene-sub" id="subtitle">একটি ছোট্ট ভালোবাসার গল্প</div>
+    <div class="people">
+      <div class="person boy"><div class="hair"></div><div class="head"></div><div class="body"></div></div>
+      <div class="person girl"><div class="hair"></div><div class="head"></div><div class="body"></div></div>
+    </div>
+    <div class="heart">♥</div>
+    <div class="rain"></div>
+    <div class="caption" id="caption">কখনো কখনো একটি দেখা, পুরো গল্প বদলে দেয়…</div>
+  </section>
+  <section class="controls">
+    <div class="topline"><span class="brand">♥ TOMATEI AMAR GOLPO</span><span class="time" id="time">00:00 / 00:36</span></div>
+    <input class="progress" id="progress" type="range" min="0" max="36" value="0" step=".1" aria-label="ভিডিওর অগ্রগতি">
+    <div class="buttons">
+      <button id="restart">↺ শুরু থেকে</button>
+      <button class="primary" id="play">▶ চালাও</button>
+      <button id="sound">♫ মিউজিক চালু</button>
+      <button id="full">⛶ Fullscreen</button>
+    </div>
+    <p class="note">এটি কোড দিয়ে তৈরি ৩৬ সেকেন্ডের অ্যানিমেটেড স্টোরি ডেমো। মিউজিক চালু করতে বাটনে চাপ দিন।</p>
+  </section>
+</main>
+<script>
+const scenes=[
+ {start:0,end:6,title:"তোমাতেই আমার গল্প",sub:"একটি ছোট্ট ভালোবাসার গল্প",caption:"কখনো কখনো একটি দেখা, পুরো গল্প বদলে দেয়…"},
+ {start:6,end:12,title:"প্রথম দেখা",sub:"এক বিকেলের নরম আলোয়",caption:"তার চোখে ছিল অচেনা এক মায়া।"},
+ {start:12,end:18,title:"বন্ধুত্ব থেকে ভালোবাসা",sub:"কথা বাড়ে, মনও কাছাকাছি আসে",caption:"প্রতিদিনের কথাগুলোই হয়ে উঠল সবচেয়ে প্রিয়।"},
+ {start:18,end:25,title:"বৃষ্টিভেজা প্রতিশ্রুতি",sub:"এক ছাতার নিচে দুটো মন",caption:"বৃষ্টি থেমে গেলেও, অনুভূতিটা থামেনি।"},
+ {start:25,end:31,title:"হৃদয়ের কথা",sub:"কিছু অনুভূতি শব্দ ছাড়াই বোঝা যায়",caption:"সে শুধু বলল—তুমি পাশে থেকো।"},
+ {start:31,end:36,title:"শেষ নয়, নতুন শুরু",sub:"প্রতিটি দিন, একসাথে",caption:"ভালোবাসা মানে—বারবার একে অপরকে বেছে নেওয়া। ♥"}
+];
+const stage=document.getElementById('stage'),title=document.getElementById('title'),subtitle=document.getElementById('subtitle'),caption=document.getElementById('caption'),progress=document.getElementById('progress'),time=document.getElementById('time'),play=document.getElementById('play');
+let t=0,playing=false,last=0,audio=null,osc=[],gain=null,soundOn=false;
+const duration=36;
+function render(){
+ let s=scenes.find(x=>t>=x.start&&t<x.end)||scenes[5];
+ let idx=scenes.indexOf(s);
+ stage.dataset.scene=idx;title.textContent=s.title;subtitle.textContent=s.sub;caption.textContent=s.caption;
+ progress.value=t;time.textContent=`${fmt(t)} / ${fmt(duration)}`;
+}
+function fmt(v){let n=Math.floor(v);return String(Math.floor(n/60)).padStart(2,'0')+':'+String(n%60).padStart(2,'0')}
+function tick(now){if(!playing)return;if(last) t+=(now-last)/1000;last=now;if(t>=duration){t=duration;playing=false;play.textContent='▶ আবার চালাও';stopMusic()}render();if(playing)requestAnimationFrame(tick)}
+function start(){if(t>=duration)t=0;playing=true;last=0;play.textContent='❚❚ বিরতি';if(soundOn)startMusic();requestAnimationFrame(tick)}
+function pause(){playing=false;play.textContent='▶ চালাও';stopMusic()}
+play.onclick=()=>playing?pause():start();
+document.getElementById('restart').onclick=()=>{pause();t=0;render()};
+progress.oninput=()=>{t=+progress.value;render();if(playing){last=0}};
+document.getElementById('full').onclick=()=>{if(!document.fullscreenElement)document.querySelector('.player').requestFullscreen?.();else document.exitFullscreen?.()};
+function startMusic(){
+ if(audio)return;
+ try{audio=new (window.AudioContext||window.webkitAudioContext)();gain=audio.createGain();gain.gain.value=.035;gain.connect(audio.destination);
+ [261.63,329.63,392,329.63,293.66,349.23,440,349.23].forEach((f,i)=>{let o=audio.createOscillator(),g=audio.createGain();o.type='sine';o.frequency.value=f;g.gain.value=.18;o.connect(g);g.connect(gain);o.start();osc.push(o);});
+ }catch(e){}
+}
+function stopMusic(){if(audio){osc.forEach(o=>{try{o.stop()}catch(e){}});audio.close();audio=null;osc=[]}}
+document.getElementById('sound').onclick=()=>{soundOn=!soundOn;document.getElementById('sound').textContent=soundOn?'♫ মিউজিক বন্ধ':'♫ মিউজিক চালু';if(soundOn&&playing)startMusic();else stopMusic()};
+render();
+</script>
+</body>
+</html>
